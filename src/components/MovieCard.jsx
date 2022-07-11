@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+//Components
 import styles from "./MovieCard.module.css";
+import { getMovieImg } from "../utils/getMovieImg";
+//Hooks
+import { Link } from "react-router-dom";
 
 function MovieCard({ movie }) {
-  const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
+  //Functions
+  const imageUrl = getMovieImg(movie.poster_path, 300);
+  //Render
   return (
     <li className={styles.movieCard}>
       <Link to={"/movies/" + movie.id}>

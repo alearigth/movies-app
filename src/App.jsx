@@ -1,9 +1,19 @@
+//Styles
 import styles from "./App.module.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+//Hooks
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+//Components
 import MovieDetails from "./pages/MovieDetails";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
+//Render
   return (
     <Router>
       <header>
@@ -12,14 +22,11 @@ function App() {
         </Link>
       </header>
       <main>
-        <Switch>
-          <Route exact path="/movies/:movieId">
-            <MovieDetails />
-          </Route>
-          <Route path="/">
-            <LandingPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/movies/:movieId" element={<MovieDetails />}></Route>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
       </main>
     </Router>
   );
